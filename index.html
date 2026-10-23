@@ -3,14 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="estrellas-fugaces.css">
     <title>Historia de los Reyes Magos</title>
+    <link rel="stylesheet" href="estrellas-fugaces.css">
     <style>
         body {
-            <div class="estrellas-fugaces" aria-hidden="true">
-          <span></span><span></span><span></span><span></span>
-          <span></span><span></span><span></span><span></span>
-            </div>
             background-color: #0b132b; /* Azul noche profundo */
             color: #f8db94; /* Color oro/estrella */
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -22,8 +18,15 @@
             margin: 0;
             text-align: center;
             padding: 20px;
+            box-sizing: border-box;
+        }
+        /* Las estrellas pasan por detrás de la tarjeta */
+        .estrellas-fugaces {
+            z-index: 0;
         }
         .container {
+            position: relative;
+            z-index: 1;
             background: rgba(255, 255, 255, 0.05);
             padding: 40px 20px;
             border-radius: 15px;
@@ -32,9 +35,18 @@
             max-width: 400px;
             width: 100%;
         }
-        h1 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
+        /* El logo es negro sobre blanco, por eso va sobre un recuadro claro */
+        .logo {
+            background: #fff;
+            border-radius: 10px;
+            padding: 8px;
+            margin: 0 auto 24px;
+            max-width: 320px;
+        }
+        .logo img {
+            display: block;
+            width: 100%;
+            height: auto;
         }
         p {
             font-size: 1rem;
@@ -49,17 +61,24 @@
 </head>
 <body>
 
+    <!-- Estrellas fugaces -->
+    <div class="estrellas-fugaces" aria-hidden="true">
+        <span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span>
+    </div>
+
     <div class="container">
-        <h1><img src="logo.jpeg" alt="A Soto Arte Religioso — Arte hecho pasión" width="320"></h1>
+        <div class="logo">
+            <img src="logo.jpeg" alt="A Soto Arte Religioso — Arte hecho pasión">
+        </div>
         <p>Acerca tu celular para escuchar la historia</p>
-        
+
         <!-- Asegúrate de que el nombre del archivo aquí sea igual al de tu audio -->
         <audio controls controlsList="nodownload">
             <source src="Gaspar.mpeg" type="audio/mpeg">
             Tu navegador no soporta el elemento de audio.
         </audio>
     </div>
-    
 
 </body>
 </html>
