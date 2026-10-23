@@ -1,0 +1,82 @@
+/* ==========================================================
+   Estrellas fugaces — A Soto Arte Religioso
+   Uso: <div class="estrellas-fugaces" aria-hidden="true">
+          <span></span><span></span>... (8 spans)
+        </div>
+   ========================================================== */
+
+.estrellas-fugaces {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.estrellas-fugaces span {
+  --largo: 140px;
+  --recorrido: 900px;
+  --duracion: 6s;
+
+  position: absolute;
+  top: var(--y, 0);
+  left: var(--x, 50%);
+  width: var(--largo);
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.85));
+  opacity: 0;
+  transform: rotate(35deg) translateX(0);
+  transform-origin: right center;
+  animation: estrella-fugaz var(--duracion) linear infinite;
+  animation-delay: var(--retraso, 0s);
+}
+
+/* Cabeza luminosa de la estrella */
+.estrellas-fugaces span::after {
+  content: "";
+  position: absolute;
+  right: -2px;
+  top: 50%;
+  width: 5px;
+  height: 5px;
+  margin-top: -2.5px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow:
+    0 0 6px 2px rgba(255, 255, 255, 0.8),
+    0 0 14px 4px rgba(255, 223, 150, 0.45);
+}
+
+@keyframes estrella-fugaz {
+  0%   { opacity: 0; transform: rotate(35deg) translateX(0); }
+  4%   { opacity: 1; }
+  14%  { opacity: 0; transform: rotate(35deg) translateX(var(--recorrido)); }
+  100% { opacity: 0; transform: rotate(35deg) translateX(var(--recorrido)); }
+}
+
+/* Posiciones, tamaños y tiempos distintos para que no se vean repetidas */
+.estrellas-fugaces span:nth-child(1) { --x: 8%;  --y: -2%;  --retraso: 0s;   --duracion: 7s;   }
+.estrellas-fugaces span:nth-child(2) { --x: 28%; --y: 4%;   --retraso: 1.8s; --duracion: 9s;   --largo: 110px; }
+.estrellas-fugaces span:nth-child(3) { --x: 46%; --y: -4%;  --retraso: 3.5s; --duracion: 6.5s; --largo: 170px; }
+.estrellas-fugaces span:nth-child(4) { --x: 64%; --y: 2%;   --retraso: 5.2s; --duracion: 8s;   }
+.estrellas-fugaces span:nth-child(5) { --x: 80%; --y: -3%;  --retraso: 2.4s; --duracion: 10s;  --largo: 120px; }
+.estrellas-fugaces span:nth-child(6) { --x: 92%; --y: 8%;   --retraso: 6.6s; --duracion: 7.5s; --largo: 150px; }
+.estrellas-fugaces span:nth-child(7) { --x: 18%; --y: 14%;  --retraso: 4.3s; --duracion: 11s;  --largo: 100px; }
+.estrellas-fugaces span:nth-child(8) { --x: 55%; --y: 10%;  --retraso: 8.1s; --duracion: 9.5s; }
+
+/* En pantallas pequeñas el recorrido es más corto */
+@media (max-width: 600px) {
+  .estrellas-fugaces span {
+    --recorrido: 520px;
+    --largo: 90px;
+  }
+}
+
+/* Respeta a quienes desactivan las animaciones en su dispositivo */
+@media (prefers-reduced-motion: reduce) {
+  .estrellas-fugaces span {
+    animation: none;
+    opacity: 0;
+  }
+}
