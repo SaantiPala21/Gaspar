@@ -33,11 +33,12 @@
             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
             border: 1px solid rgba(255, 255, 255, 0.1);
             max-width: 400px;
+            box-sizing: border-box;
             width: 100%;
         }
-        /* El logo es negro sobre blanco, por eso va sobre un recuadro claro */
+        /* Recuadro negro detrás del logo */
         .logo {
-            background: #fff;
+            background: #000;
             border-radius: 10px;
             padding: 8px;
             margin: 0 auto 24px;
@@ -61,15 +62,19 @@
 </head>
 <body>
 
-    <!-- Estrellas fugaces -->
+    <!-- Cielo de Belén: estrellas que titilan, Estrella de Belén y estrellas fugaces -->
+    <div class="cielo-belen" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span>
+    </div>
+    <div class="estrella-belen" aria-hidden="true"></div>
     <div class="estrellas-fugaces" aria-hidden="true">
-        <span></span><span></span><span></span><span></span>
-        <span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
     </div>
 
     <div class="container">
         <div class="logo">
-            <img src="logo.jpeg" alt="A Soto Arte Religioso — Arte hecho pasión">
+            <img src="logo.png" alt="A Soto Arte Religioso — Arte hecho pasión">
         </div>
         <p>Acerca tu celular para escuchar la historia</p>
 
