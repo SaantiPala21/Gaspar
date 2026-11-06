@@ -6,7 +6,6 @@
     <title>Historia de los Reyes Magos</title>
     <link rel="stylesheet" href="estrellas-fugaces.css">
     <style>
-        
         body {
             background-color: #0b132b; /* Azul noche profundo */
             color: #f8db94; /* Color oro/estrella */
@@ -75,15 +74,24 @@
         <p>Acerca tu celular para escuchar la historia</p>
 
         <!-- Asegúrate de que el nombre del archivo aquí sea igual al de tu audio -->
-        <audio controls controlsList="nodownload">
+        <audio id="audio-historia" controls controlsList="nodownload">
             <source src="Gaspar.mpeg" type="audio/mpeg">
             Tu navegador no soporta el elemento de audio.
         </audio>
     </div>
+
     <script>
-        document.querySelector('audio').addEventListener('ended', () => {
-         window.location.href = 'https://www.instagram.com/asotoescultor/?hl=es-la';
-      });
+        // Al terminar el audio, intenta cerrar la página automáticamente
+        document.getElementById('audio-historia').addEventListener('ended', function () {
+            window.close();
+
+            // Si el navegador no permite cerrar la pestaña, redirige al Instagram de A Soto
+            setTimeout(function () {
+                if (!window.closed) {
+                    window.location.replace('https://www.instagram.com/asotoescultor/?hl=es-la');
+                }
+            }, 300);
+        });
     </script>
 
 </body>
