@@ -81,16 +81,9 @@
     </div>
 
     <script>
-        // Al terminar el audio, intenta cerrar la página automáticamente
+        // Al terminar el audio, redirige al Instagram de A Soto
         document.getElementById('audio-historia').addEventListener('ended', function () {
-            window.close();
-
-            // Si el navegador no permite cerrar la pestaña, redirige al Instagram de A Soto
-            setTimeout(function () {
-                if (!window.closed) {
-                    window.location.replace('https://www.instagram.com/asotoescultor/?hl=es-la');
-                }
-            }, 300);
+            window.location.replace('https://www.instagram.com/asotoescultor/?hl=es-la');
         });
     </script>
 
